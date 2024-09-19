@@ -1,5 +1,8 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        try(Scanner in = new Scanner(System.in)){;
         // Створення об'єктів Money
         Money money1 = new Money(50, (byte) 75); // 50 грн 75 коп
         Money money2 = new Money(25, (byte) 50); // 25 грн 50 коп
@@ -50,5 +53,32 @@ public class Main {
     // Модуль вектора
     double magnitude = v1.magnitude();
     System.out.println("Модуль v1: " + magnitude);
+
+
+    //task 3
+
+     // Введення першого числа
+     System.out.print("Enter the first number: ");
+     int num1 = in.nextInt();
+
+     // Введення другого числа
+     System.out.print("Enter the second number: ");
+     int num2 = in.nextInt();
+
+     // Перевірка, чи обидва числа є позитивними
+     if (num1 <= 0 || num2 <= 0) {
+         System.out.println("Both numbers must be positive integers.");
+         return;
+     }
+
+     // Виклик методів для знаходження НД і НК
+     int gcd = MathOperations.gcd(num1, num2);
+     int lcm = MathOperations.lcm(num1, num2);
+
+     // Виведення результатів
+     System.out.println("Greatest Common Divisor (GCD): " + gcd);
+     System.out.println("Least Common Multiple (LCM): " + lcm);
+    }
+ }
 }
-}
+
