@@ -1,4 +1,4 @@
-public class Vector{
+public class Vector {
     private double x;
     private double y;
     private double z;
@@ -10,10 +10,28 @@ public class Vector{
         this.z = z;
     }
 
+    // Конструктор з масиву
+    public Vector(double[] components) {
+        if (components.length != 3) {
+            throw new IllegalArgumentException("Масив повинен містити три компоненти.");
+        }
+        this.x = components[0];
+        this.y = components[1];
+        this.z = components[2];
+    }
 
     // Метод для знаходження модуля вектора
     public double magnitude() {
         return Math.sqrt(x * x + y * y + z * z);
+    }
+
+    // Метод для нормалізації вектора
+    public Vector normalize() {
+        double mag = magnitude();
+        if (mag == 0) {
+            throw new ArithmeticException("Неможливо нормалізувати нульовий вектор.");
+        }
+        return new Vector(x / mag, y / mag, z / mag);
     }
 
     // Метод для множення вектора на число
